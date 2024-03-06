@@ -1,73 +1,56 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+Documentação do Projeto ProdLink
+Este projeto é uma API de cadastro de clientes e produtos utilizando NestJS, Prisma e MySQL. Siga os passos abaixo para configurar e executar o projeto em seu ambiente local.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Pré-requisitos
+Node.js (versão 20.9.0 ou superior)
+Gerenciador de pacotes (pnpm versão 8.15.4)
+MySQL Server e MySQL Workbench
+Configuração do Ambiente
+1. Instalação do Node.js
+Se ainda não possui o Node.js instalado, faça o download e a instalação a partir do site oficial do Node.js.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+2. Instalação do Gerenciador de Pacotes
+Este projeto utiliza pnpm como gerenciador de pacotes. Para instalá-lo globalmente, execute:
 
-## Description
+npm install -g pnpm
+3. Instalação do MySQL Server e MySQL Workbench
+Baixe o MySQL Installer do site oficial do MySQL, que inclui o MySQL Server e o MySQL Workbench. Siga as instruções de instalação e crie uma conexão chamada ProdLink com uma senha de sua escolha.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Configuração do Projeto
+1. Clone o Repositório
+Clone o repositório do projeto para o seu ambiente local usando o comando:
 
-## Installation
+git clone <url-do-repositorio>
+Substitua <url-do-repositorio> pela URL do repositório do GitHub.
 
-```bash
-$ pnpm install
-```
+2. Instale as Dependências
+Navegue até a pasta do projeto clonado e execute o seguinte comando para instalar todas as dependências necessárias:
 
-## Running the app
+pnpm install
+3. Configure a Conexão com o Banco de Dados
+Crie um arquivo .env na raiz do projeto com as seguintes variáveis para configurar a conexão com o seu banco de dados MySQL:
 
-```bash
-# development
-$ pnpm run start
+DATABASE_URL="mysql://root:<SUA_SENHA>@localhost:3306/ProdLink"
+Substitua <SUA_SENHA> pela senha que você definiu durante a instalação do MySQL Server.
 
-# watch mode
-$ pnpm run start:dev
+4. Gere o Cliente Prisma
+Gere o cliente Prisma para garantir que os tipos e métodos do Prisma estejam disponíveis para o projeto:
 
-# production mode
-$ pnpm run start:prod
-```
 
-## Test
+npx prisma generate
+5. Execute as Migrações do Prisma
+Para criar as tabelas necessárias no seu banco de dados, execute:
 
-```bash
-# unit tests
-$ pnpm run test
+npx prisma migrate dev
+Este comando irá aplicar as migrações necessárias ao banco de dados configurado no .env.
 
-# e2e tests
-$ pnpm run test:e2e
+Executando o Projeto
+Após configurar o projeto, você está pronto para executá-lo. Rode o seguinte comando:
 
-# test coverage
-$ pnpm run test:cov
-```
+sh
+Copy code
+pnpm start:dev
+Isso iniciará o servidor de desenvolvimento. Você pode acessar a API através de http://localhost:3000.
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Documentação da API com Swagger
+A documentação interativa da API está disponível através do Swagger. Acesse http://localhost:3000/api no seu navegador para visualizá-la.
