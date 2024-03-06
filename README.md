@@ -1,56 +1,52 @@
-Documentação do Projeto ProdLink
-Este projeto é uma API de cadastro de clientes e produtos utilizando NestJS, Prisma e MySQL. Siga os passos abaixo para configurar e executar o projeto em seu ambiente local.
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+</p>
 
-Pré-requisitos
-Node.js (versão 20.9.0 ou superior)
-Gerenciador de pacotes (pnpm versão 8.15.4)
-MySQL Server e MySQL Workbench
-Configuração do Ambiente
-1. Instalação do Node.js
-Se ainda não possui o Node.js instalado, faça o download e a instalação a partir do site oficial do Node.js.
+<p align="center">
+  Uma API de cadastro de clientes e produtos construída com <a href="http://nodejs.org" target="_blank">Node.js</a> utilizando NestJS, Prisma e MySQL.
+</p>
 
-2. Instalação do Gerenciador de Pacotes
-Este projeto utiliza pnpm como gerenciador de pacotes. Para instalá-lo globalmente, execute:
+## Descrição
 
-npm install -g pnpm
-3. Instalação do MySQL Server e MySQL Workbench
-Baixe o MySQL Installer do site oficial do MySQL, que inclui o MySQL Server e o MySQL Workbench. Siga as instruções de instalação e crie uma conexão chamada ProdLink com uma senha de sua escolha.
+Este repositório é o ponto de partida para criar uma API utilizando o framework NestJS com Prisma ORM para a manipulação de dados de um banco de dados MySQL.
 
-Configuração do Projeto
-1. Clone o Repositório
-Clone o repositório do projeto para o seu ambiente local usando o comando:
+## Instalação
 
-git clone <url-do-repositorio>
-Substitua <url-do-repositorio> pela URL do repositório do GitHub.
+Instale as dependências do projeto com o comando:
 
-2. Instale as Dependências
-Navegue até a pasta do projeto clonado e execute o seguinte comando para instalar todas as dependências necessárias:
-
-pnpm install
-3. Configure a Conexão com o Banco de Dados
-Crie um arquivo .env na raiz do projeto com as seguintes variáveis para configurar a conexão com o seu banco de dados MySQL:
-
-DATABASE_URL="mysql://root:<SUA_SENHA>@localhost:3306/ProdLink"
-Substitua <SUA_SENHA> pela senha que você definiu durante a instalação do MySQL Server.
-
-4. Gere o Cliente Prisma
-Gere o cliente Prisma para garantir que os tipos e métodos do Prisma estejam disponíveis para o projeto:
+```
+$ pnpm install
+```
 
 
-npx prisma generate
-5. Execute as Migrações do Prisma
-Para criar as tabelas necessárias no seu banco de dados, execute:
+## Configuração do Banco de Dados
+Certifique-se de criar uma conexão de banco de dados MySQL chamada ProdLink e modificar o arquivo .env com suas credenciais de acesso.
 
-npx prisma migrate dev
-Este comando irá aplicar as migrações necessárias ao banco de dados configurado no .env.
+```
+DATABASE_URL="mysql://root:SUA_SENHA@localhost:3306/ProdLink"
+```
 
-Executando o Projeto
-Após configurar o projeto, você está pronto para executá-lo. Rode o seguinte comando:
+## Executando a Aplicação
+Para gerar e aplicar migrações do banco de dados, execute:
 
-sh
-Copy code
-pnpm start:dev
-Isso iniciará o servidor de desenvolvimento. Você pode acessar a API através de http://localhost:3000.
+```
+$ npx prisma generate
+$ npx prisma migrate dev
 
-Documentação da API com Swagger
-A documentação interativa da API está disponível através do Swagger. Acesse http://localhost:3000/api no seu navegador para visualizá-la.
+```
+
+Para executar a aplicação em modo de desenvolvimento, use:
+
+```
+$ pnpm run start:dev
+```
+
+
+
+
+
+
+
+
+
+
