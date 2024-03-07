@@ -41,10 +41,6 @@ export class CreateClientDto {
   @IsEmail({}, { message: 'Email must be a valid email address.' })
   email?: string;
 
-  @ApiProperty({ description: 'Whether the client is active', example: true })
-  @IsBoolean({ message: 'IsActive must be a boolean.' })
-  isActive: boolean = true;
-
   @ApiProperty({
     description: "The client's password",
     example: 'strongPassword123',

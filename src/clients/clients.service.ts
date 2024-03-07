@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
@@ -8,13 +12,26 @@ import * as bcrypt from 'bcrypt';
 export class ClientsService {
   constructor(private prisma: PrismaService) {}
 
-  async create(createClientDto: CreateClientDto) {
+  async create(createClientDto: CreateClientDto): Promise<any> {
+    // Verificar se já existe um cliente com o mesmo email
+    const existingClient = await this.prisma.client.findUnique({
+      where: {
+        email: createClientDto.email,
+      },
+    });
+
+    if (existingClient) {
+      throw new ConflictException('Um cliente com este email já existe');
+    }
+
     const hashedPassword = await bcrypt.hash(createClientDto.password, 10);
     const clientData = { ...createClientDto, password: hashedPassword };
 
-    return this.prisma.client.create({
-      data: clientData,
+    const { password, ...result } = await this.prisma.client.create({
+      data: { ...clientData, isActive: true },
     });
+
+    return result;
   }
 
   async findAll() {
